@@ -27,34 +27,7 @@ public class PedidoDAO extends Conecta {
             }
         }
     }
-   /* public void salvarPedidoItem(Pedido pedido) throws Exception {
-        et = em.getTransaction();
-        try {
-            Query query = em.createQuery("select p from Pedido as p where p.descricao like :dados");
-            query.setParameter("dados", dados + "%");
-            List<Pedido> pedidos = query.getResultList();
-            return pedidos;
-        } finally {
-            em.close();
-        }
-        try {
-            et.begin();
-            em.persist(pedido);
-            et.commit();
-        } catch (Exception ex) {
-            try {
-                et.rollback();
-            } catch (Exception re) {
-                re.toString();
-            }
-            throw ex;
-        } finally {
-            if (em != null) {
-                em.close();
-            }
-        }
-    } */
-
+   
     //Alterar Pedido
     public void edit(Pedido pedido) throws Exception {
         et = em.getTransaction();
