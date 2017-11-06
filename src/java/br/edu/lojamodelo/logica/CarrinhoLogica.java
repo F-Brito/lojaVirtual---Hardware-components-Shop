@@ -15,6 +15,7 @@ import br.edu.lojamodelo.model.Pedido;
 import br.edu.lojamodelo.model.Produto;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,21 +43,23 @@ public class CarrinhoLogica implements Logica {
             try {
                 CtrlProduto ctrlProduto = new CtrlProduto();
                 Produto produto = ctrlProduto.buscarID(Long.parseLong(req.getParameter("id")));
-                
+                int cont = 0;
                 Item item = new Item();
                 item.setProduto(produto);
+               
                 
                 if (pedido == null) pedido = new Pedido();
+                
                 item.setValor();
-                pedido.adiciona(item);
-                //item.setPedido(pedido);
-                String[] quant= null;
-                pedido.setValor(calularValor(pedido, quant));
+                pedido.adiciona(item); 
+                
+                //String[] quant= null;
+                pedido.setValor(calculaValor2(pedido, item));
                 
                 carrinho.setAttribute("pedido", pedido);
                 carrinho.setAttribute("itens", pedido.getItens());
                 carrinho.setAttribute("tamanho", pedido.getItens().size());
-
+                
                 pagina = "index.jsp?p=carrinho";
             } catch (Exception ex) {
                 req.setAttribute("erros", ex.toString());
@@ -65,25 +68,29 @@ public class CarrinhoLogica implements Logica {
 
         if (req.getParameter("action").equals("remove")) {
             try {
-                Long id = Long.parseLong(req.getParameter("id"));
+                Long idProduto = Long.parseLong(req.getParameter("id"));
             
                 List<Item> lista = new ArrayList<Item>();
                 //pedido.getItens().size() != 0
                 if (!pedido.getItens().isEmpty()){
                     for (Item item : pedido.getItens() ){
                         // Adiciona itens da lista antiga a minha nova lista, ignorando apenas o único item pelo qual passei o ID no parâmetro .
-                        if (item.getProduto().getId() != id){
+                        if (item.getProduto().getId() != idProduto){
                             lista.add(item);
+                            char[] id = item.getProduto().getId().toString().toCharArray();
+                            
+                           // pedido.setItens(lista);
+                
+                         //   pedido.setValor(calculaValor2(pedido, item));
+               // String[] quant= req.getParameterValues("quant");
+               // pedido.setValor(calularValor(pedido, quant));
+                            
                         }
                     }
                 }
                 
-                
-                   pedido.setItens(lista);
-                
-
-                String[] quant= req.getParameterValues("quant");
-                pedido.setValor(calularValor(pedido, quant));
+                pedido.setItens(lista);
+                pedido.setValor(calculaValor3(pedido));   
 
                 carrinho.setAttribute("pedido", pedido);
                 carrinho.setAttribute("itens", pedido.getItens());
@@ -100,6 +107,7 @@ public class CarrinhoLogica implements Logica {
         
         if (req.getParameter("action").equals("calcular")) {
               String[] quant= req.getParameterValues("quant");
+              
               
               pedido.setValor(calularValor(pedido, quant));
               
@@ -177,6 +185,47 @@ public class CarrinhoLogica implements Logica {
         }
 
     // Calcula o valor
+    private double calculaValor3(Pedido pedido){
+              int cont = 0;
+              double total = 0;
+              int numeroItens = 0;
+              
+              
+              
+              for (Item i : pedido.getItens()) {
+                    
+                    
+                        i.setValor();
+                        total += i.getValor();
+                        numeroItens += i.getQuant();
+                    
+                    
+                    cont++;
+              }
+              
+              pedido.setNumeroItens(numeroItens);
+              return total; 
+    }
+    private double calculaValor2(Pedido pedido, Item item){
+              int cont = 0;
+              double total = 0;
+              int numeroItens = 0;
+              
+              for (Item i : pedido.getItens()) {
+                    if (Objects.equals(i.getProduto().getId(), item.getProduto().getId())) {
+                        i.setQuant(1);
+                    } 
+                    i.setValor();
+                    total += i.getValor();
+                    numeroItens += i.getQuant();
+                    cont++;
+              }
+              
+              pedido.setNumeroItens(numeroItens);
+              return total; 
+    }
+    
+    
     private double calularValor(Pedido pedido, String[] quant) {
               int cont = 0;
               double total = 0;

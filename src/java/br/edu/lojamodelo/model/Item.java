@@ -45,6 +45,7 @@ public class Item implements Serializable {
     
     public Item(){
       this.setQuant(1);
+      
      
     }
     

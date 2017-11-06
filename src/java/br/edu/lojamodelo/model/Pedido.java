@@ -74,13 +74,14 @@ public class Pedido implements Serializable {
       //  this.getItens().add(item);
         int cont = 0;
         for (Item i : itens){
-            if (Objects.equals(i.getProduto().getId(), item.getProduto().getId()))
+            if (Objects.equals(i.getProduto().getId(), item.getProduto().getId())) 
                 cont ++;
+                
         }
         
         if (cont == 0){
             itens.add(item);
-        }
+        } 
     }
     
     public Date getData() {

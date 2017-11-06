@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/logica/ClienteLogica.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/logica/CarrinhoLogica.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/carrinho.jsp</file>
             <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/logica/EnviaEmail.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/model/Item.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/model/Pedido.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/msg.jsp</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/dao/PedidoDAO.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/model/Produto.java</file>
         </group>
     </open-files>
 </project-private>
