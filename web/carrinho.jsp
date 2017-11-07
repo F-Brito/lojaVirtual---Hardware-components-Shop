@@ -42,7 +42,9 @@
                 </td>
 
                 <td class="col-md-1">
-                    <input type="number" name="quant" placeholder="0" min="1" max="${item.produto.quant}" value="${item.quant}" step="1" class="form-control" onclick="execute(this.form)">
+                    <input type="number" name="quant" placeholder="0" min="1" value="${item.quant}" step="1" class="form-control" max="${item.produto.quant}" onchange="execute(this.form);">
+                    
+                    
                 </td>
 
                 <td class="col-md-2"> 
@@ -86,11 +88,12 @@
 
 <script>
     // window.onload(execute(this.form));
-
+    
     function execute(frm) {
         frm.action = "fc?logica=CarrinhoLogica&action=calcular";
         frm.submit();
     }
+    
     function pag(frm) {
         frm.action = "fc?logica=CarrinhoLogica&action=pagamento";
         frm.submit();

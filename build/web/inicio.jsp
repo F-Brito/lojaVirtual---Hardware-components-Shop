@@ -55,7 +55,7 @@
 
         <div class="row">
             <h2 class="product"><a href="index.jsp?p=produto/desktop">Desktops</a></h2>
-
+            
         <c:forEach var="itens" begin="0" end="5" step="1" items="${produto.listar('Desktop')}">
             <a class="link-produtos" href="fc?logica=ProdutoLogica&action=desc&id=${itens.id}">
                 <div class="col-md-2 div-produtos">

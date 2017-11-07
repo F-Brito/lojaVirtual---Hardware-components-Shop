@@ -36,8 +36,8 @@ public class FrontController extends HttpServlet {
             request.getRequestDispatcher(pagina).forward(request, response);
         } catch (Exception e) {
             throw new ServletException("A lógica de negócios causou uma exceção.", e);
+           
         }
-
     }
 
 //Codido doGET e doPOST

@@ -62,3 +62,12 @@ function SomenteNumero(e) {
     }
 }
 
+function ApenasNumeros(){
+	var tecla = window.event.keyCode;
+	tecla = String.formCharCode(tecla);
+	if (!((tecla >= "0") && (tecla <= "9"))){
+		window.event.keyCode = 0;
+               
+	}
+}
+

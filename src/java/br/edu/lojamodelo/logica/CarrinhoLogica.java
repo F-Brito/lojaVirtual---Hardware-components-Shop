@@ -29,7 +29,7 @@ import javax.servlet.http.HttpSession;
 public class CarrinhoLogica implements Logica {
 
     @Override
-    public String executa(HttpServletRequest req, HttpServletResponse res) throws Exception {
+    public String executa(HttpServletRequest req, HttpServletResponse res) throws Exception, NumberFormatException {
         String pagina = "index.jsp";
         
         /* ABERTURA DE SESSÃO DO USUÁRIO */
@@ -47,14 +47,13 @@ public class CarrinhoLogica implements Logica {
                 Item item = new Item();
                 item.setProduto(produto);
                
-                
                 if (pedido == null) pedido = new Pedido();
                 
                 item.setValor();
                 pedido.adiciona(item); 
                 
-                //String[] quant= null;
-                pedido.setValor(calculaValor2(pedido, item));
+                String[] quant= null;
+                pedido.setValor(calularValor(pedido, quant));
                 
                 carrinho.setAttribute("pedido", pedido);
                 carrinho.setAttribute("itens", pedido.getItens());
@@ -78,19 +77,12 @@ public class CarrinhoLogica implements Logica {
                         if (item.getProduto().getId() != idProduto){
                             lista.add(item);
                             char[] id = item.getProduto().getId().toString().toCharArray();
-                            
-                           // pedido.setItens(lista);
-                
-                         //   pedido.setValor(calculaValor2(pedido, item));
-               // String[] quant= req.getParameterValues("quant");
-               // pedido.setValor(calularValor(pedido, quant));
-                            
                         }
                     }
                 }
-                
                 pedido.setItens(lista);
-                pedido.setValor(calculaValor3(pedido));   
+                String [] quant = null;
+                pedido.setValor(calularValor(pedido, quant));   
 
                 carrinho.setAttribute("pedido", pedido);
                 carrinho.setAttribute("itens", pedido.getItens());
@@ -106,7 +98,7 @@ public class CarrinhoLogica implements Logica {
         
         
         if (req.getParameter("action").equals("calcular")) {
-              String[] quant= req.getParameterValues("quant");
+              try{ String[] quant= req.getParameterValues("quant");
               
               
               pedido.setValor(calularValor(pedido, quant));
@@ -114,8 +106,12 @@ public class CarrinhoLogica implements Logica {
               carrinho.setAttribute("pedido", pedido);
               carrinho.setAttribute("itens", pedido.getItens());
               carrinho.setAttribute("tamanho", pedido.getItens().size()); 
+             
+              } catch (NumberFormatException e){
+                req.setAttribute("numeroErro", "apenasNumeros");    
+            }
               pagina = "index.jsp?p=carrinho"; 
-        }
+        } 
         
          if (req.getParameter("action").equals("pagamento")) {
              String id = req.getParameter("idUser");
@@ -134,9 +130,7 @@ public class CarrinhoLogica implements Logica {
                     carrinho.setAttribute("tamanho", pedido.getItens().size()); 
                     pagina = "index.jsp?p=pagamento";  
                      }
-                 
              } else {
-                 
                  req.setAttribute("erros","Por favor, efetue o login para prosseguir");
                  pagina = "index.jsp?p=carrinho";
              }
@@ -165,6 +159,8 @@ public class CarrinhoLogica implements Logica {
              for (Item i : pedido.getItens()) {
                     if (i.getProduto().getId() == Long.parseLong(id[cont])){
                         ctrlItem.salvar(i);
+                        i.getProduto().calcQuant(i.getQuant());
+                        ctrlProduto.alterar(i.getProduto());
                     }
                     cont++; 
              }
@@ -185,47 +181,6 @@ public class CarrinhoLogica implements Logica {
         }
 
     // Calcula o valor
-    private double calculaValor3(Pedido pedido){
-              int cont = 0;
-              double total = 0;
-              int numeroItens = 0;
-              
-              
-              
-              for (Item i : pedido.getItens()) {
-                    
-                    
-                        i.setValor();
-                        total += i.getValor();
-                        numeroItens += i.getQuant();
-                    
-                    
-                    cont++;
-              }
-              
-              pedido.setNumeroItens(numeroItens);
-              return total; 
-    }
-    private double calculaValor2(Pedido pedido, Item item){
-              int cont = 0;
-              double total = 0;
-              int numeroItens = 0;
-              
-              for (Item i : pedido.getItens()) {
-                    if (Objects.equals(i.getProduto().getId(), item.getProduto().getId())) {
-                        i.setQuant(1);
-                    } 
-                    i.setValor();
-                    total += i.getValor();
-                    numeroItens += i.getQuant();
-                    cont++;
-              }
-              
-              pedido.setNumeroItens(numeroItens);
-              return total; 
-    }
-    
-    
     private double calularValor(Pedido pedido, String[] quant) {
               int cont = 0;
               double total = 0;
@@ -234,15 +189,13 @@ public class CarrinhoLogica implements Logica {
               for (Item i : pedido.getItens()) {
                     if (quant != null){
                         i.setQuant(Integer.parseInt(quant[cont]));
-                    } else {
-                        i.setQuant(1);
-                    }
+                    } 
+                    
                     i.setValor();
                     total += i.getValor();
                     numeroItens += i.getQuant();
                     cont++;
               }
-              
               pedido.setNumeroItens(numeroItens);
               return total;     
     }

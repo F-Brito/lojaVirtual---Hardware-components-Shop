@@ -37,9 +37,8 @@ public class Produto implements Serializable {
     //Dados padrões
     @Column(nullable = true)
     
-    public int calcQuant(int q){
-        int quant = 0;
-        return quant = this.quant -= q; 
+    public void calcQuant(int q){
+        this.quant -= q; 
     }
 
     public String getDescricao() {

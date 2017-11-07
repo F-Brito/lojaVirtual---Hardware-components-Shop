@@ -6,5 +6,5 @@ import javax.servlet.http.HttpServletResponse;
 public interface Logica {
 
     String executa(HttpServletRequest req,
-            HttpServletResponse res) throws Exception;
+            HttpServletResponse res) throws Exception, NumberFormatException;
 }

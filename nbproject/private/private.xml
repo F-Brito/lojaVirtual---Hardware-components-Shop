@@ -6,11 +6,27 @@
             <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/logica/ClienteLogica.java</file>
             <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/logica/CarrinhoLogica.java</file>
             <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/carrinho.jsp</file>
-            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/logica/EnviaEmail.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/inicio.jsp</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/produto/zonapesquisa.jsp</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/produto/placamae.jsp</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/logica/Logica.java</file>
             <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/model/Item.java</file>
-            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/model/Pedido.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/js/script.js</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/logica/ProdutoLogica.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/pagamento.jsp</file>
             <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/msg.jsp</file>
             <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/dao/PedidoDAO.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/controller/FrontController.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/logica/EnviaEmail.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/formCliente.jsp</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/model/Pedido.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/js/npm.js</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/descProduto.jsp</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/produto/desktop.jsp</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/formProduto.jsp</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/produto/notebook.jsp</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/controller/CtrlProduto.java</file>
+            <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/web/index.jsp</file>
             <file>file:/C:/Users/Felipe/Pictures/projeto%20mail/lojaWEB/src/java/br/edu/lojamodelo/model/Produto.java</file>
         </group>
     </open-files>

@@ -9,6 +9,7 @@
         <c:if test="${not empty alertas}">
         <div class="alert alert-warning"><strong>Alertas:</strong><br>${alertas}</div>
         </c:if>
+        
 </div>
 <br>
 <br>
